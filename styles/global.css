@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base resets and variables that Tailwind doesn't cover by default */
+:root {
+  --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif;
+
+  /* Light theme defaults */
+  --bg-color: #ffffff;
+  --fg-color: #0f172a; /* slate-900 */
+  --muted-fg-color: #334155; /* slate-700 */
+  --border-color: #e2e8f0; /* slate-200 */
+}
+
+html, body {
+  @apply p-0 m-0 overflow-x-hidden;
+  font-family: var(--notion-font);
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  scroll-behavior: smooth;
+}
+
+a {
+  @apply no-underline text-inherit;
+}
+
+/* Utility for Notion search input to align with theme colors */
+.searchInput {
+  color: var(--fg-color);
+  caret-color: var(--fg-color);
+}
+
+/* Explicit light mode class to ensure consistency */
+.light-mode {
+  --bg-color: #ffffff;
+  --fg-color: #0f172a; /* slate-900 */
+  --muted-fg-color: #334155; /* slate-700 */
+  --border-color: #e2e8f0; /* slate-200 */
+}
+
+/* Dark mode variables consumed by global styles and components */
+.dark-mode {
+  --bg-color: #0b1220; /* slate-950-ish */
+  --fg-color: #e5e7eb; /* gray-200 */
+  --muted-fg-color: #94a3b8; /* slate-400 */
+  --border-color: #1f2937; /* gray-800 */
+}
+
+/* Helpful base elements respecting theme variables */
+hr { border-color: var(--border-color); }
+input, textarea, select {
+  color: var(--fg-color);
+  background-color: transparent;
+  border-color: var(--border-color);
+}

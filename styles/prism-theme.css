@@ -1,0 +1,178 @@
+/* Prism theme overrides for better integration with the site theme */
+
+/* Code block styling */
+pre[class*="language-"] {
+  background-color: var(--bg-color-1) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 0.5rem !important;
+  padding: 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  overflow-x: auto !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+}
+
+code[class*="language-"] {
+  color: var(--fg-color) !important;
+  background: none !important;
+  text-shadow: none !important;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Courier New', monospace !important;
+}
+
+/* Syntax highlighting colors that work with both light and dark themes */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6b7280; /* gray-500 */
+}
+
+.token.punctuation {
+  color: #9ca3af; /* gray-400 */
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ef4444; /* red-500 */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #10b981; /* emerald-500 */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #f59e0b; /* amber-500 */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #3b82f6; /* blue-500 */
+}
+
+.token.function,
+.token.class-name {
+  color: #8b5cf6; /* violet-500 */
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #f97316; /* orange-500 */
+}
+
+/* Dark mode specific adjustments */
+.dark-mode .token.comment,
+.dark-mode .token.prolog,
+.dark-mode .token.doctype,
+.dark-mode .token.cdata {
+  color: #9ca3af; /* gray-400 */
+}
+
+.dark-mode .token.punctuation {
+  color: #d1d5db; /* gray-300 */
+}
+
+.dark-mode .token.property,
+.dark-mode .token.tag,
+.dark-mode .token.boolean,
+.dark-mode .token.number,
+.dark-mode .token.constant,
+.dark-mode .token.symbol,
+.dark-mode .token.deleted {
+  color: #f87171; /* red-400 */
+}
+
+.dark-mode .token.selector,
+.dark-mode .token.attr-name,
+.dark-mode .token.string,
+.dark-mode .token.char,
+.dark-mode .token.builtin,
+.dark-mode .token.inserted {
+  color: #34d399; /* emerald-400 */
+}
+
+.dark-mode .token.operator,
+.dark-mode .token.entity,
+.dark-mode .token.url,
+.dark-mode .language-css .token.string,
+.dark-mode .style .token.string {
+  color: #fbbf24; /* amber-400 */
+}
+
+.dark-mode .token.atrule,
+.dark-mode .token.attr-value,
+.dark-mode .token.keyword {
+  color: #60a5fa; /* blue-400 */
+}
+
+.dark-mode .token.function,
+.dark-mode .token.class-name {
+  color: #a78bfa; /* violet-400 */
+}
+
+.dark-mode .token.regex,
+.dark-mode .token.important,
+.dark-mode .token.variable {
+  color: #fb923c; /* orange-400 */
+}
+
+/* Inline code styling */
+:not(pre) > code[class*="language-"] {
+  background-color: var(--bg-color-1) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 0.25rem !important;
+  padding: 0.125rem 0.375rem !important;
+  font-size: 0.875rem !important;
+  color: var(--fg-color) !important;
+}
+
+/* Line numbers */
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid var(--border-color) !important;
+}
+
+.line-numbers-rows > span:before {
+  color: var(--muted-fg-color) !important;
+}
+
+/* Copy button styling */
+.code-copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--bg-color) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 0.25rem !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  color: var(--fg-color) !important;
+  cursor: pointer !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.code-copy-button:hover {
+  opacity: 1 !important;
+}
+
+/* Dark mode copy button */
+.dark-mode .code-copy-button {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}

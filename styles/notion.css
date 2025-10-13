@@ -1,0 +1,145 @@
+/* Notion-specific styles and overrides */
+
+/* Global notion styles */
+.notion {
+  font-family: var(--notion-font);
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+}
+
+/* Notion page styles */
+.notion-page {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Notion text styles */
+.notion-text {
+  color: var(--fg-color);
+  line-height: 1.6;
+}
+
+.notion-h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem 0;
+  color: var(--fg-color);
+}
+
+.notion-h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.75rem 0;
+  color: var(--fg-color);
+}
+
+.notion-h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem 0;
+  color: var(--fg-color);
+}
+
+/* Notion code styles */
+.notion-code {
+  background-color: var(--bg-color-1);
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.notion-inline-code {
+  background-color: var(--bg-color-1);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+}
+
+/* Notion list styles */
+.notion-list {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.notion-list-item {
+  margin: 0.25rem 0;
+  color: var(--fg-color);
+}
+
+/* Notion block styles */
+.notion-block {
+  margin: 0.5rem 0;
+}
+
+/* Notion quote styles */
+.notion-quote {
+  border-left: 4px solid var(--border-color);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: var(--muted-fg-color);
+}
+
+/* Notion divider */
+.notion-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 2rem 0;
+}
+
+/* Notion table styles */
+.notion-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.notion-table th,
+.notion-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.notion-table th {
+  background-color: var(--bg-color-1);
+  font-weight: 600;
+}
+
+/* Notion callout styles */
+.notion-callout {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: var(--bg-color-1);
+}
+
+/* Dark mode adjustments */
+.dark-mode .notion-code {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .notion-inline-code {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .notion-table th {
+  background-color: #1e293b;
+}
+
+.dark-mode .notion-callout {
+  background-color: #1e293b;
+  border-color: #334155;
+}
