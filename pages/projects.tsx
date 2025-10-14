@@ -287,6 +287,106 @@ export default function ProjectsPage() {
               </div>
             </div>
 
+            {/* Human Resource Management System Project */}
+            <div className='bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full'>
+              <div className='flex items-center mb-6'>
+                <div className='w-12 h-12 bg-emerald-100 dark:bg-emerald-900 rounded-lg flex items-center justify-center mr-4'>
+                  <svg className='w-6 h-6 text-emerald-600 dark:text-emerald-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>Human Resource Management System</h2>
+                  <p className='text-gray-600 dark:text-gray-300'>Complete HR Automation Platform</p>
+                </div>
+              </div>
+
+              <div className='space-y-3 mb-6'>
+                <div className='flex items-start'>
+                  <svg className='w-5 h-5 text-emerald-500 mt-1 mr-3 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
+                  </svg>
+                  <span className='text-gray-700 dark:text-gray-300 text-sm'>Automated employee data management, payroll processing, attendance, and leave tracking</span>
+                </div>
+                <div className='flex items-start'>
+                  <svg className='w-5 h-5 text-emerald-500 mt-1 mr-3 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
+                  </svg>
+                  <span className='text-gray-700 dark:text-gray-300 text-sm'>Role-based access, JWT authentication, and RESTful APIs for secure modular communication</span>
+                </div>
+                <div className='flex items-start'>
+                  <svg className='w-5 h-5 text-emerald-500 mt-1 mr-3 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
+                  </svg>
+                  <span className='text-gray-700 dark:text-gray-300 text-sm'>Real-time workforce insights through integrated dashboard with responsive multi-device UI</span>
+                </div>
+              </div>
+
+              <div className='flex flex-wrap gap-2 mb-6'>
+                {['SQL', 'Express.js', 'React', 'Node.js', 'JWT', 'REST API', 'Jest', 'Responsive Design'].map((tech) => (
+                  <span key={tech} className='px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 rounded-full text-xs font-medium'>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className='flex mt-auto'>
+                <span className='inline-flex items-center px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium opacity-80'>
+                  Enterprise HR Solution
+                </span>
+              </div>
+            </div>
+
+            {/* Procurement Management System Project */}
+            <div className='bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full'>
+              <div className='flex items-center mb-6'>
+                <div className='w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mr-4'>
+                  <svg className='w-6 h-6 text-indigo-600 dark:text-indigo-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01' />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>Procurement Management System</h2>
+                  <p className='text-gray-600 dark:text-gray-300'>End-to-End Purchasing Automation</p>
+                </div>
+              </div>
+
+              <div className='space-y-3 mb-6'>
+                <div className='flex items-start'>
+                  <svg className='w-5 h-5 text-indigo-500 mt-1 mr-3 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
+                  </svg>
+                  <span className='text-gray-700 dark:text-gray-300 text-sm'>Automated complete purchasing process from requisition to purchase order</span>
+                </div>
+                <div className='flex items-start'>
+                  <svg className='w-5 h-5 text-indigo-500 mt-1 mr-3 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
+                  </svg>
+                  <span className='text-gray-700 dark:text-gray-300 text-sm'>RFQs, quotations, supplier and item management modules for enhanced transparency</span>
+                </div>
+                <div className='flex items-start'>
+                  <svg className='w-5 h-5 text-indigo-500 mt-1 mr-3 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
+                  </svg>
+                  <span className='text-gray-700 dark:text-gray-300 text-sm'>Secure role-based access with approval workflows and comprehensive audit tracking</span>
+                </div>
+              </div>
+
+              <div className='flex flex-wrap gap-2 mb-6'>
+                {['React', 'Node.js', 'Express.js', 'MySQL', 'TypeScript', 'Tailwind CSS', 'JWT', 'REST API'].map((tech) => (
+                  <span key={tech} className='px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-medium'>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className='flex mt-auto'>
+                <span className='inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium opacity-80'>
+                  Enterprise Solution
+                </span>
+              </div>
+            </div>
+
             {/* Customer Relationship Management System */}
             <div className='bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full'>
               <div className='flex items-center mb-6'>

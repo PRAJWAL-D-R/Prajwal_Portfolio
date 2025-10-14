@@ -7,15 +7,16 @@
 ### Required environment variables
 Set these in Vercel Project Settings → Environment Variables (Production and Preview):
 
-- `RESEND_API_KEY` — for `pages/api/send-email.ts`
-- `NEXT_PUBLIC_FATHOM_ID` — optional
-- `NEXT_PUBLIC_POSTHOG_ID` — optional
+- `NEXT_PUBLIC_FATHOM_ID` — optional (for analytics)
+- `NEXT_PUBLIC_POSTHOG_ID` — optional (for analytics)
 - `REDIS_ENABLED` — optional (`true`/`false`)
 - `REDIS_HOST` — optional
 - `REDIS_PASSWORD` — optional
 - `REDIS_USER` — optional (default `default`)
 - `REDIS_URL` — optional
 - `REDIS_NAMESPACE` — optional (default `preview-images`)
+
+**Note:** Contact form now uses mailto links (no server-side email sending), so no email API keys are needed.
 
 Note: `PORT` is managed by Vercel automatically.
 
