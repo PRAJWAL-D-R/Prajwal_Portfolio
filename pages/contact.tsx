@@ -12,52 +12,27 @@ export default function ContactPage() {
   })
   const [showModal, setShowModal] = React.useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    await withLoading(async () => {
-      try {
-        // Use Formspree - it's working as shown in your dashboard
-        const response = await fetch('https://formspree.io/f/mpwyyber', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            _subject: `Portfolio Contact: ${formData.name}`,
-            _replyto: formData.email,
-            _cc: 'prajwaldr125@gmail.com', // Send copy to your email
-          }),
-        })
-
-        if (response.ok) {
-          // Reset form on success
-          setFormData({ name: '', email: '', message: '' })
-          setShowModal(true)
-        } else {
-          // Fallback to mailto if Formspree fails
-          const subject = `Portfolio Contact: ${formData.name}`
-          const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-          const mailtoLink = `mailto:prajwaldr125@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-          
-          window.location.href = mailtoLink
-          alert('Email client opened! Please send the email to prajwaldr125@gmail.com')
-        }
-      } catch (error) {
-        console.error('Error sending email:', error)
-        
-        // Final fallback to mailto
-        const subject = `Portfolio Contact: ${formData.name}`
-        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        const mailtoLink = `mailto:prajwaldr125@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-        
-        window.location.href = mailtoLink
-        alert('Email client opened! Please send the email to prajwaldr125@gmail.com')
-      }
-    }, 500) // Minimum 500ms loading time
+    // Validate email format
+    const emailRegex = /.+@.+\..+/
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address')
+      return
+    }
+    
+    // Create mailto link with pre-filled content
+    const subject = `Portfolio Contact: ${formData.name}`
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    const mailtoLink = `mailto:prajwaldr125@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    
+    // Open email client
+    window.location.href = mailtoLink
+    
+    // Reset form after opening email client
+    setFormData({ name: '', email: '', message: '' })
+    setShowModal(true)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -290,13 +265,14 @@ export default function ContactPage() {
             {/* Success Message */}
             <div className="text-center">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Message Sent Successfully!
+                Email Client Opened!
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Thank you for reaching out! I'll get back to you soon at{' '}
+                Your email client should have opened with a pre-filled message. Please send it to{' '}
                 <span className="font-semibold text-blue-600 dark:text-blue-400">
                   prajwaldr125@gmail.com
                 </span>
+                {' '}and I'll get back to you soon!
               </p>
               
               {/* Action Buttons */}
