@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import * as React from 'react'
-import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView, useReducedMotion } from 'framer-motion'
 
 import Layout from '@/components/Layout'
 import * as config from '@/lib/config'
@@ -19,6 +19,7 @@ function AnimatedSection({ children, className = '', delay = 0, id }: { children
   const ref = React.useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
   const [isMobile, setIsMobile] = React.useState(false)
+  const shouldReduceMotion = useReducedMotion()
 
   React.useEffect(() => {
     const checkMobile = () => {
@@ -157,45 +158,24 @@ export default function HomePage() {
       <main className='min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 '>
         {/* Hero Section */}
         <section className='relative overflow-hidden min-h-screen flex items-center '>
-          {/* Animated Background Elements */}
+          {/* Animated Background Elements (reduced on mobile / prefers-reduced-motion) */}
           <motion.div
-            className='absolute top-20 left-10 w-20 h-20 bg-blue-400 rounded-full opacity-10'
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-              rotate: [0, 180, 360]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+            aria-hidden
+            className='hidden md:block absolute top-20 left-10 w-20 h-20 bg-blue-400 rounded-full opacity-10'
+            animate={shouldReduceMotion ? undefined : { y: [0, -20, 0], x: [0, 10, 0], rotate: [0, 180, 360] }}
+            transition={shouldReduceMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className='absolute top-40 right-20 w-16 h-16 bg-purple-400 rounded-full opacity-10'
-            animate={{
-              y: [0, 20, 0],
-              x: [0, -15, 0],
-              rotate: [0, -180, -360]
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+            aria-hidden
+            className='hidden md:block absolute top-40 right-20 w-16 h-16 bg-purple-400 rounded-full opacity-10'
+            animate={shouldReduceMotion ? undefined : { y: [0, 20, 0], x: [0, -15, 0], rotate: [0, -180, -360] }}
+            transition={shouldReduceMotion ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className='absolute bottom-40 left-1/4 w-12 h-12 bg-cyan-400 rounded-full opacity-10'
-            animate={{
-              y: [0, -15, 0],
-              x: [0, 20, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+            aria-hidden
+            className='hidden md:block absolute bottom-40 left-1/4 w-12 h-12 bg-cyan-400 rounded-full opacity-10'
+            animate={shouldReduceMotion ? undefined : { y: [0, -15, 0], x: [0, 20, 0], scale: [1, 1.12, 1] }}
+            transition={shouldReduceMotion ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
           
           <div className='max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 py-6 sm:py-10 lg:py-12'>
@@ -988,7 +968,10 @@ export default function HomePage() {
         {/* Cinematic Tour Modal */}
         {isTourOpen && (
           <motion.div
-            className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm'
+            role='dialog'
+            aria-modal='true'
+            aria-label='Portfolio tour'
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm px-4'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -1019,7 +1002,7 @@ export default function HomePage() {
             </div>
 
             <motion.div
-              className='relative w-full max-w-4xl mx-4 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden'
+              className='relative w-full max-w-lg sm:max-w-2xl lg:max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden'
               initial={{ scale: isMobile ? 0.8 : 0.95, opacity: 0, rotateY: isMobile ? -15 : 0 }}
               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
               exit={{ scale: isMobile ? 0.8 : 0.95, opacity: 0, rotateY: isMobile ? 15 : 0 }}
@@ -1034,11 +1017,11 @@ export default function HomePage() {
                 />
               </div>
               
-              <div className='p-8'>
+              <div className='p-5 sm:p-8'>
                 {/* Close Button */}
                 <motion.button
                   onClick={closeTour}
-                  className='absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-700'
+                  className='absolute top-3 right-3 sm:top-4 sm:right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-700'
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -1078,7 +1061,7 @@ export default function HomePage() {
 
                   {/* Emoji Animation with Glow Effect */}
                   <motion.div
-                    className='text-8xl mb-6 relative'
+                    className='text-6xl sm:text-7xl md:text-8xl mb-6 relative'
                     initial={{ scale: isMobile ? 0 : 0.8, rotate: isMobile ? -180 : 0 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ duration: isMobile ? 0.8 : 0.4, ease: "easeOut" }}
@@ -1096,7 +1079,7 @@ export default function HomePage() {
 
                   {/* Title with Typewriter Effect */}
                   <motion.h2
-                    className='text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4'
+                    className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4'
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -1106,7 +1089,7 @@ export default function HomePage() {
 
                   {/* Subtitle with Gradient Animation */}
                   <motion.h3
-                    className={`text-lg sm:text-xl font-semibold bg-gradient-to-r ${tourSteps[currentTourStep]?.color || 'from-blue-500 to-purple-600'} bg-clip-text text-transparent mb-6`}
+                    className={`text-base sm:text-lg md:text-xl font-semibold bg-gradient-to-r ${tourSteps[currentTourStep]?.color || 'from-blue-500 to-purple-600'} bg-clip-text text-transparent mb-4 sm:mb-6`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
@@ -1116,7 +1099,7 @@ export default function HomePage() {
 
                   {/* Content with Staggered Animation */}
                   <motion.p
-                    className='text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto mb-8'
+                    className='text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6 sm:mb-8'
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
@@ -1147,11 +1130,11 @@ export default function HomePage() {
                 </motion.div>
 
                 {/* Enhanced Navigation */}
-                <div className='flex justify-between items-center'>
+                <div className='flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between items-stretch sm:items-center'>
                   <motion.button
                     onClick={prevTourStep}
                     disabled={currentTourStep === 0}
-                    className={`px-5 py-2.5 rounded-md font-medium transition-colors duration-200 ${
+                    className={`px-4 py-2.5 rounded-md font-medium transition-colors duration-200 ${
                       currentTourStep === 0
                         ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                         : 'bg-gray-600 hover:bg-gray-700 text-white shadow-sm'
@@ -1166,7 +1149,7 @@ export default function HomePage() {
                   </motion.button>
 
                   <motion.div 
-                    className='text-sm text-gray-500 dark:text-gray-400 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full'
+                    className='order-first sm:order-none text-sm text-gray-500 dark:text-gray-400 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-center'
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: isMobile ? 0.6 : 0.3 }}
@@ -1176,7 +1159,7 @@ export default function HomePage() {
 
                   <motion.button
                     onClick={nextTourStep}
-                    className={`px-5 py-2.5 rounded-md font-medium transition-colors duration-200 bg-gradient-to-r ${tourSteps[currentTourStep]?.color || 'from-blue-500 to-purple-600'} hover:opacity-90 text-white shadow-sm`}
+                    className={`px-4 py-2.5 rounded-md font-medium transition-colors duration-200 bg-gradient-to-r ${tourSteps[currentTourStep]?.color || 'from-blue-500 to-purple-600'} hover:opacity-90 text-white shadow-sm`}
                     whileHover={{ scale: isMobile ? 1.05 : 1.02, x: isMobile ? 2 : 0 }}
                     whileTap={{ scale: isMobile ? 0.95 : 0.98 }}
                   >
