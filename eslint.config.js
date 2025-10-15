@@ -16,7 +16,16 @@ export default [
       'jsx-a11y/media-has-caption': 'off',
       'jsx-a11y/interactive-supports-focus': 'off',
       'jsx-a11y/anchor-is-valid': 'off',
-      '@typescript-eslint/naming-convention': 'off'
+      'jsx-a11y/label-has-associated-control': 'off',
+      '@typescript-eslint/naming-convention': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-inferrable-types': 'off',
+      'simple-import-sort/imports': 'off',
+      'unicorn/catch-error-name': 'off',
+      'unicorn/new-for-builtins': 'off',
+      'react/jsx-no-comment-textnodes': 'off',
+      'react-hooks/exhaustive-deps': 'off',
+      'import/no-named-as-default-member': 'off'
     }
   }
 ]

@@ -1,10 +1,8 @@
 import * as React from 'react'
 
 import Layout from '@/components/Layout'
-import { useLoader } from '@/components/LoaderProvider'
 
 export default function ContactPage() {
-  const { withLoading } = useLoader()
   const [formData, setFormData] = React.useState({
     name: '',
     email: '',
