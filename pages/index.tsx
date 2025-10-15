@@ -50,6 +50,7 @@ export default function HomePage() {
   const [isTourOpen, setIsTourOpen] = React.useState(false)
   const [currentTourStep, setCurrentTourStep] = React.useState(0)
   const [isMobile, setIsMobile] = React.useState(false)
+  const shouldReduceMotion = useReducedMotion()
 
   React.useEffect(() => {
     const handleScroll = () => {
