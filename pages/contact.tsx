@@ -23,12 +23,12 @@ export default function ContactPage() {
     }
     
     // Create mailto link with pre-filled content
-    const subject = `Portfolio Contact: ${formData.name}`
-    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    const mailtoLink = `mailto:prajwaldr125@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    
+          const subject = `Portfolio Contact: ${formData.name}`
+          const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+          const mailtoLink = `mailto:prajwaldr125@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+          
     // Open email client
-    window.location.href = mailtoLink
+          window.location.href = mailtoLink
     
     // Reset form after opening email client
     setFormData({ name: '', email: '', message: '' })
