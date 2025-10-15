@@ -163,20 +163,20 @@ export default function HomePage() {
           <motion.div
             aria-hidden
             className='hidden md:block absolute top-20 left-10 w-20 h-20 bg-blue-400 rounded-full opacity-10'
-            animate={shouldReduceMotion ? undefined : { y: [0, -20, 0], x: [0, 10, 0], rotate: [0, 180, 360] }}
-            transition={shouldReduceMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, -20, 0], x: [0, 10, 0], rotate: [0, 180, 360] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
             aria-hidden
             className='hidden md:block absolute top-40 right-20 w-16 h-16 bg-purple-400 rounded-full opacity-10'
-            animate={shouldReduceMotion ? undefined : { y: [0, 20, 0], x: [0, -15, 0], rotate: [0, -180, -360] }}
-            transition={shouldReduceMotion ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, 20, 0], x: [0, -15, 0], rotate: [0, -180, -360] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
             aria-hidden
             className='hidden md:block absolute bottom-40 left-1/4 w-12 h-12 bg-cyan-400 rounded-full opacity-10'
-            animate={shouldReduceMotion ? undefined : { y: [0, -15, 0], x: [0, 20, 0], scale: [1, 1.12, 1] }}
-            transition={shouldReduceMotion ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, -15, 0], x: [0, 20, 0], scale: [1, 1.12, 1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
           
           <div className='max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 py-6 sm:py-10 lg:py-12'>
