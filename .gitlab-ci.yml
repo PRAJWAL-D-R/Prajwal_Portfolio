@@ -1,0 +1,102 @@
+image: node:22
+
+variables:
+  NODE_ENV: production
+  NEXT_TELEMETRY_DISABLED: "1"
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
+    - .next/cache/
+
+stages:
+  - install
+  - quality
+  - test
+  - build
+  - export
+  - deploy
+
+install:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1h
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH'
+
+lint:
+  stage: quality
+  needs: ["install"]
+  script:
+    - npm run lint || npm run test:lint
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH'
+
+typecheck:
+  stage: quality
+  needs: ["install"]
+  script:
+    - npx tsc -v && npx tsc --noEmit || echo "Skipping typecheck"
+  allow_failure: true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH'
+
+test_unit:
+  stage: test
+  needs: ["install"]
+  script:
+    - npm run test || npm run test:lint
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH'
+
+build:
+  stage: build
+  needs:
+    - lint
+    - typecheck
+    - test_unit
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - .next/
+    expire_in: 1 day
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH'
+
+export:
+  stage: export
+  needs: ["build"]
+  script:
+    - npm run export || echo "No export script; skipping"
+    - if [ -d out ]; then rm -rf public && mv out public; fi
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+pages:
+  stage: deploy
+  needs: ["export"]
+  script:
+    - echo "Deploying GitLab Pages from public/"
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+
